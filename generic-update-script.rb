@@ -221,6 +221,7 @@ dependencies.select(&:top_level?).each do |dep|
   ########################################
   # Create a pull request for the update #
   ########################################
+  print " Files Updated - Raising PR…"
   assignee = (ENV["PULL_REQUESTS_ASSIGNEE"] || ENV["GITLAB_ASSIGNEE_ID"])&.to_i
   assignees = assignee ? [assignee] : assignee
   pr_creator = Dependabot::PullRequestCreator.new(
