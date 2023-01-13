@@ -177,12 +177,15 @@ dependencies.select(&:top_level?).each do |dep|
   #########################################
   # Get update details for the dependency #
   #########################################
+  print "  - UpdateChecking #{dep.name} (from #{dep.version}, source_url #{dep.requirements[0]})…"
   checker = Dependabot::UpdateCheckers.for_package_manager(package_manager).new(
     dependency: dep,
     dependency_files: files,
     credentials: credentials,
     options: options,
   )
+  puts " done"
+  puts "  - checker #{checker}"
 
   next if checker.up_to_date?
 
